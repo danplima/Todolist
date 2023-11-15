@@ -1,4 +1,4 @@
-package com.client.todolist.entity;
+package com.client.todolist.domain.entity;
 
 import java.time.LocalDateTime;
 
@@ -6,9 +6,13 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,7 +31,8 @@ public class Task {
 	private Long id;
 	private String name;
 	private String description;
-	private StatusTask status;
+	@Enumerated(EnumType.STRING)
+	private StatusTask status = StatusTask.TO_DO;
 	
 	@CreationTimestamp
 	@Column(name = "created_date")
@@ -36,4 +41,8 @@ public class Task {
 	private LocalDateTime startAt;
 	@Column(name = "end_date")
 	private LocalDateTime endAt;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_project")
+	private Project project;
 }

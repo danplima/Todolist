@@ -1,6 +1,4 @@
-package com.client.todolist.entity;
-
-import java.time.LocalDateTime;
+package com.client.todolist.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,23 +10,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @Entity
-@Table(name = "tb_project")
-public class Project {
-	
+@Table(name = "tb_users")
+public class User {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_project")
+	@Column(name = "id_user")
 	private Long id;
 	private String name;
-	private String description;
-
-	@Column(name = "start_date")
-	private LocalDateTime startDate;
-	@Column(name = "end_date")
-	private LocalDateTime endDate;
+	private String email;
+	private String password;
 
 }

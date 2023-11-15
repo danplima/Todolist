@@ -1,4 +1,4 @@
-package com.client.todolist.entity;
+package com.client.todolist.domain.entity;
 
 public enum StatusTask {
 	TO_DO,  //1
